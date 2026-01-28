@@ -9,6 +9,7 @@
 !code_adlo_2lev_seaice_update
 !input_adhi
 !input_adlo
+!.sh
 
 # Allow mappings Python source, but not caches
 !mappings/
