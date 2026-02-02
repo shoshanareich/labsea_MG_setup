@@ -22,6 +22,8 @@ iter = sys.argv[1]
 ext = sys.argv[2]
 
 root_dir = '/scratch/08382/shoshi/labsea_runs/'
+#run_dir = '/scratch/shoshi/labsea_MG_12/assim_argo_MG/run_adhi_it' + iter + ext + '/'
+#run_dir_lo = '/scratch/shoshi/labsea_MG_12/assim_argo_MG/run_adlo_it' + iter + ext + '/'
 
 run_dir = root_dir + 'assim_argo_MG/run_adhi_it' + iter + ext + '/'
 run_dir_lo = root_dir + 'assim_argo_MG/run_adlo_it' + iter + ext + '/'

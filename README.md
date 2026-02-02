@@ -1,1 +1,1 @@
-based on MITgcm c69c with pkg/obsfit added
+based on MITgcm c69j 
