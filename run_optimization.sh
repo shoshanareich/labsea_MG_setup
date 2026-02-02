@@ -1,10 +1,19 @@
 #!/bin/bash -x
-#SBATCH -J labseaMG 
-#SBATCH -o labseaMG.%j.out
-#SBATCH -e labseaMG.%j.err
-#SBATCH -t 96:00:00
-#SBATCH -N 7 
+#SBATCH -J labseaMGargo 
+#SBATCH -o labseaMGargo.%j.out
+#SBATCH -e labseaMGargo.%j.err
+#SBATCH -t 1:00:00
+#SBATCH -p skx-dev
+#SBATCH -N 6 
 #SBATCH -n 180
+#SBATCH -A OCE23001
+#SBATCH --mail-user=sreich@utexas.edu
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=end
+
+## SVERDRUP
+##SBATCH -N 8
+##SBATCH -n 180
 
 #--- 0.load modules ------
 #module purge
@@ -12,10 +21,17 @@
 #module load intel/2023.1.0 openmpi4/4.1.5 phdf5/1.14.1 netcdf-fortran/4.6.0 netcdf/4.9.0 prun
 #echo $LD_LIBRARY_PATH
 
+module purge; module load intel/25.1 impi/21.15 netcdf/4.9.2 hdf5/1.14.6
+
 #ulimit -s hard
 #ulimit -u hard
+ulimit -s unlimited
+ulimit -v unlimited
+#export IBRUN_TASKS_PER_NODE=16
+export I_MPI_DEBUG=4
 
-source activate py38
+#export UCX_MEMTYPE_CACHE=n
+#export UCX_TLS=rc,self,sm
 
 #---- set variables ------
 # note: for nprocs, take ntiles - length(blanklist)
@@ -29,8 +45,10 @@ costfactor=0.95
 jobfile=run_optimization.bash
 
 #--- set dir ------------
-rootdir=/home/shoshi/MITgcm_c69j/lab_sea12/
-scratchdir=/scratch/shoshi/labsea_MG_12/assim_argo_MG
+#rootdir=/home/shoshi/MITgcm_c69j/lab_sea12/
+#scratchdir=/scratch/shoshi/labsea_MG_12/assim_argo_MG
+rootdir=/work2/08382/shoshi/stampede3/MITgcm_c69j/lab_sea12/
+scratchdir=/scratch/08382/shoshi/labsea_runs/assim_argo_MG/
 
 builddir_hi=${rootdir}/build_adhi_2lev_seaice_update_mpi
 builddir_lo=${rootdir}/build_adlo_2lev_seaice_update_mpi
@@ -64,7 +82,9 @@ while [ ! ${iter} -gt $itermax ]; do
   
   set -x
   date > run.MITGCM.timing
-  mpiexec -np ${nprocs_hr} ./mitgcmuv_ad > stdout
+#  mpiexec -np ${nprocs_hr} ./mitgcmuv_ad > stdout
+  ibrun -n ${nprocs_hr} ./mitgcmuv_ad > stdout
+#  ibrun -npernode 16 ./mitgcmuv_ad > stdout
   date >> run.MITGCM.timing
   cd ..
 
@@ -76,10 +96,13 @@ while [ ! ${iter} -gt $itermax ]; do
     mkdir -p $workdir_lo;
   fi
 
+  source $(conda info --base)/etc/profile.d/conda.sh
+  conda activate py38
   # create low-res xx_[ctrl]
   python3 ${rootdir}/mappings/make_cost_cp_v2.py "$ext2" ""
   ## profiles retiling 
   python3 ${rootdir}/mappings/make_prof_lr_tiles.py "$ext2" "" 
+  conda deactivate
 
   cd $workdir_lo
 
@@ -95,12 +118,15 @@ while [ ! ${iter} -gt $itermax ]; do
   
   set -x
   date > run.MITGCM.timing
-  mpiexec -np ${nprocs_lr} ./mitgcmuv_ad > stdout
+#  mpiexec -np ${nprocs_lr} ./mitgcmuv_ad > stdout
+  ibrun -n ${nprocs_lr} ./mitgcmuv_ad > stdout
   date >> run.MITGCM.timing
 
-  sed -i 's/61/0/g' divided.ctrl
+#  sed -i 's/61/0/g' divided.ctrl
+  sed -i 's/376/0/g' divided.ctrl
   date > run.MITGCM.timing
-  mpiexec -np ${nprocs_lr} ./mitgcmuv_ad > stdout
+#  mpiexec -np ${nprocs_lr} ./mitgcmuv_ad > stdout
+  ibrun -n ${nprocs_lr} ./mitgcmuv_ad > stdout
   date >> run.MITGCM.timing
   cd ..
 
@@ -171,7 +197,8 @@ EOF
   
   set -x
   date > run.MITGCM.timing
-  mpiexec -np ${nprocs_lr} ./mitgcmuv_ad > stdout #2>&1 &
+#  mpiexec -np ${nprocs_lr} ./mitgcmuv_ad > stdout #2>&1 &
+  ibrun -n ${nprocs_lr} ./mitgcmuv_ad > stdout #2>&1 &
 
 #  # Get the PID of the executable
 #  EXEC_PID=$!
@@ -195,7 +222,10 @@ EOF
 
 # --- 5. interpolate adjustments to high-res -----------
 echo $(printf "%04d" $((iter+1)))  # "000$((iter+1))"
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate py38
 python3 ${rootdir}/mappings/interp_xx_lores_to_hires_itX_v2.py $(printf "%04d" $((iter+1))) #"000$((iter+1))" $interp_type
+conda deactivate
 
 #  let iter=6
   let iter=iter+1

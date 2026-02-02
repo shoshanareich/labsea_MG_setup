@@ -5,13 +5,14 @@ import glob
 import os
 
 import sys
-sys.path.append('/home/shoshi/MITgcm_c68r/MITgcm/utils/python/MITgcmutils')
+#sys.path.append('/home/shoshi/MITgcm_c68r/MITgcm/utils/python/MITgcmutils')
+sys.path.append('/work2/08382/shoshi/stampede3/MITgcm_c69j/MITgcm/utils/python/MITgcmutils')
 from MITgcmutils import rdmds
 
-sys.path.append('/home/shoshi/jupyter_notebooks')
+sys.path.append('/work2/08382/shoshi/stampede3/jupyter_notebooks')
 from read_write import *
 
-sys.path.append('/home/shoshi/jupyter_notebooks/DivA/swot_assim/')
+sys.path.append('/work2/08382/shoshi/stampede3/jupyter_notebooks/DivA/swot_assim/')
 import map_ocean_tiles
 
 fname = 'ARGO_WO_2024_PFL_D_labsea_splitcost'
@@ -20,18 +21,20 @@ fnames = [fname, 'ad'+fname]
 iter = sys.argv[1]
 ext = sys.argv[2]
 
-run_dir = '/scratch/shoshi/labsea_MG_12/assim_argo_MG/run_adhi_it' + iter + ext + '/'
-run_dir_lo = '/scratch/shoshi/labsea_MG_12/assim_argo_MG/run_adlo_it' + iter + ext + '/'
+root_dir = '/scratch/08382/shoshi/labsea_runs/'
 
-grid_dir_hr = '/scratch/shoshi/labsea_MG_12/grid_hires/'
-grid_dir_lr = '/scratch/shoshi/labsea_MG_12/grid_lores/'
+run_dir = root_dir + 'assim_argo_MG/run_adhi_it' + iter + ext + '/'
+run_dir_lo = root_dir + 'assim_argo_MG/run_adlo_it' + iter + ext + '/'
+
+grid_dir_hr = root_dir + 'grid_hires/'
+grid_dir_lr = root_dir + 'grid_lores/'
 
 grid_hr = xmitgcm.open_mdsdataset(grid_dir_hr, grid_dir=grid_dir_hr, iters = None)
 grid_lr = xmitgcm.open_mdsdataset(grid_dir_lr, grid_dir=grid_dir_lr, iters = None)
 
-hfacc_hr = rdmds('/scratch/shoshi/labsea_MG_12/grid_hires_cleanbathy/' + 'hFacC')
+hfacc_hr = rdmds(root_dir + 'grid_hires_cleanbathy/' + 'hFacC')
 #hfacc_lr = rdmds(run_dir_lo + 'hFacC')
-hfacc_lr = rdmds('/scratch/shoshi/labsea_MG_12/grid_lores_cleanbathy/'+ 'hFacC')
+hfacc_lr = rdmds(root_dir + 'grid_lores_cleanbathy/'+ 'hFacC')
 
 grid_hr.hFacC.values = hfacc_hr
 grid_lr.hFacC.values = hfacc_lr

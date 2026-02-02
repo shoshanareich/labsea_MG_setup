@@ -49,7 +49,7 @@ c     nthreads_chkpt - Number of threads to be used; nth_chkpt .eq. nTx*nTy
       parameter (nmonths_chkpt  =         12 )
       parameter (ndays_chkpt    =         31 )
       parameter (ngeom_chkpt    = nr*nsx*nsy )
-      parameter (ncheck_chkpt   =         6 )
+      parameter (ncheck_chkpt   =        6 )
       parameter ( nthreads_chkpt = 1 )
 
 #ifdef ALLOW_TAMC_CHECKPOINTING
@@ -64,8 +64,10 @@ cph      integer    nchklev_4
 cph      parameter( nchklev_4      =   4 )
 c      parameter( nchklev_1      =  4 )
 c      parameter( nchklev_2      =  144 )
-      parameter( nchklev_1      =  72  )
-      parameter( nchklev_2      =  63 )
+CSR      parameter( nchklev_1      =  72  )
+CSR      parameter( nchklev_2      =  63 )
+      parameter( nchklev_1      =  12 )
+      parameter( nchklev_2      =  378 )
       parameter( nchklev_3      =  1 )
 
 c--   Note always check for the correct sizes of the common blocks!

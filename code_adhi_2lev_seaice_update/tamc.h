@@ -64,8 +64,10 @@ cph      integer    nchklev_4
 cph      parameter( nchklev_4      =   4 )
 c      parameter( nchklev_1      =  4 )
 c      parameter( nchklev_2      =  144 )
-      parameter( nchklev_1      =  288 )
-      parameter( nchklev_2      =  63 )
+CSR      parameter( nchklev_1      =  288 )
+CSR      parameter( nchklev_2      =  63 )
+      parameter( nchklev_1      =  48)
+      parameter( nchklev_2      =  378 )
       parameter( nchklev_3      =  1 )
 
 c--   Note always check for the correct sizes of the common blocks!

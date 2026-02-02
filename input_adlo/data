@@ -102,8 +102,10 @@
 # tauCD=172800.,
 # startTime=0.0,
  nIter0=1,
+# 1 day
+ nTimeSteps=72,
 # 5 days
- nTimeSteps=360,
+# nTimeSteps=360,
 # 6 days
 # nTimeSteps=432,
 # 24 days

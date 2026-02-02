@@ -2,9 +2,12 @@ iter=$1
 optimext=$2
 
 #--- 2.set dir ------------
-rootdir=/home/shoshi/MITgcm_c69j/lab_sea12/
-datadir=/home/shoshi/MITgcm_obsfit/lab_sea12/
-scratchdir=/scratch/shoshi/labsea_MG_12/assim_argo_MG/
+#rootdir=/home/shoshi/MITgcm_c69j/lab_sea12/
+#datadir=/home/shoshi/MITgcm_obsfit/lab_sea12/
+#scratchdir=/scratch/shoshi/labsea_MG_12/assim_argo_MG/
+rootdir=/work2/08382/shoshi/stampede3/MITgcm_c69j/lab_sea12/
+datadir=/work2/08382/shoshi/stampede3/MITgcm_c69j/lab_sea12/
+scratchdir=/scratch/08382/shoshi/labsea_runs/assim_argo_MG/
 dirrun_pup=${scratchdir}/run_adlo_packunpack/
 
 hr_dir_iter0=${scratchdir}/run_adhi_it0000
@@ -25,10 +28,14 @@ ln -s ${datadir}/input_binaries_hires/ARGO_WO_2024_PFL_D_labsea_splitcost.nc .
 ln -s ${datadir}/input_weights_hires/*_jra3q_weights_Jan2024_64b_SMOOTHED_removeboundary.bin .
 ln -s ${datadir}/input_weights_hires/*fromASTE_*.bin .
 ln -s ${datadir}/input_binaries_hires/diffkr_r4_HR.bin .
-cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup_seaice.0000103680.meta pickup_seaice.0000000001.meta
-cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup_seaice.0000103680.data pickup_seaice.0000000001.data
-cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup.0000103680.meta pickup.0000000001.meta
-cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup.0000103680.data pickup.0000000001.data
+#cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup_seaice.0000103680.meta pickup_seaice.0000000001.meta
+#cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup_seaice.0000103680.data pickup_seaice.0000000001.data
+#cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup.0000103680.meta pickup.0000000001.meta
+#cp /scratch/shoshi/labsea_MG_12//run_hi_1yr_jra3q_B/pickup.0000103680.data pickup.0000000001.data
+cp ${datadir}/input_binaries_hires/pickup_seaice.0000103680.meta pickup_seaice.0000000001.meta
+cp ${datadir}/input_binaries_hires/pickup_seaice.0000103680.data pickup_seaice.0000000001.data
+cp ${datadir}/input_binaries_hires/pickup.0000103680.meta pickup.0000000001.meta
+cp ${datadir}/input_binaries_hires/pickup.0000103680.data pickup.0000000001.data
 cp ${datadir}/input_binaries_hires/smooth2Dscales001_4x.bin ./smooth2Dscales000.data
 cp ${datadir}/input_binaries_hires/smooth2Dscales001_4x.bin ./smooth2Dscales001.data
 cp ${datadir}/input_binaries_hires/smooth3DscalesH001_4x.bin ./smooth3DscalesH001.data
@@ -40,7 +47,8 @@ cp ${datadir}/input_binaries_hires/smooth2Dnorm001.meta ./smooth2Dnorm000.meta
 cp ${datadir}/input_binaries_hires/smooth2Dnorm001.data ./smooth2Dnorm000.data
 cp ${datadir}/input_binaries_hires/smooth*norm* .
 mkdir jra3q
-ln -s /scratch/shared/jra3q/jra3q_*_2024 ./jra3q/
+#ln -s /scratch/shared/jra3q/jra3q_*_2024 ./jra3q/
+ln -s /scratch/08382/shoshi/jra3q/jra3q_*_2024 ./jra3q/
 
 #-- swap out data.ctrl and copy high-res adjustments
 if [ ${iter} -lt 1 ]; then
