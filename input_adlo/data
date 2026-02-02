@@ -69,7 +69,7 @@
  useSingleCpuIO=.TRUE.,
  readBinaryPrec=32,
  writeBinaryPrec=32,
- debugLevel=0,
+ debugLevel=-1,
  &
 
 # Elliptic solver parameters
@@ -103,9 +103,9 @@
 # startTime=0.0,
  nIter0=1,
 # 1 day
- nTimeSteps=72,
+# nTimeSteps=72,
 # 5 days
-# nTimeSteps=360,
+ nTimeSteps=360,
 # 6 days
 # nTimeSteps=432,
 # 24 days

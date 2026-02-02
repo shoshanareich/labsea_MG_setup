@@ -102,11 +102,11 @@
  nIter0=1,
 # nTimeSteps=1,
 # 1 day
- nTimeSteps=276,
+# nTimeSteps=288,
 # 2 days
 # nTimeSteps=564,
 # 5 days
-# nTimeSteps=1440,
+ nTimeSteps=1440,
 # 31 days
 # nTimeSteps=8928,
 # 63 days 1/4 - 3/6
