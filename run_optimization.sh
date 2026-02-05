@@ -2,8 +2,8 @@
 #SBATCH -J labseaMGargo 
 #SBATCH -o labseaMGargo.%j.out
 #SBATCH -e labseaMGargo.%j.err
-#SBATCH -t 1:00:00
-#SBATCH -p skx-dev
+#SBATCH -t 48:00:00
+#SBATCH -p skx
 #SBATCH -N 6 
 #SBATCH -n 180
 #SBATCH -A OCE23001
@@ -39,7 +39,7 @@ nprocs_hr=180
 nprocs_lr=16
 
 iter=0
-itermax=3
+itermax=6
 costfactor=0.95
 
 jobfile=run_optimization.bash

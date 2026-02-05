@@ -105,7 +105,7 @@
 # 1 day
 # nTimeSteps=72,
 # 5 days
- nTimeSteps=360,
+# nTimeSteps=360,
 # 6 days
 # nTimeSteps=432,
 # 24 days
@@ -113,7 +113,7 @@
 # 31 days
 # nTimeSteps=2232,
 # 63 days 1/4 - 3/6
-# nTimeSteps=4536,
+ nTimeSteps=4536,
 # 10 years 
 # nTimeSteps=262980,
  deltaT=1200.0,

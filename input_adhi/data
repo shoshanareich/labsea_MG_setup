@@ -106,11 +106,11 @@
 # 2 days
 # nTimeSteps=564,
 # 5 days
- nTimeSteps=1440,
+# nTimeSteps=1440,
 # 31 days
 # nTimeSteps=8928,
 # 63 days 1/4 - 3/6
-# nTimeSteps=18144,
+ nTimeSteps=18144,
  deltaT=300.0,
 # deltaTmom=3600.0,
 # deltaTtracer=3600.0,
