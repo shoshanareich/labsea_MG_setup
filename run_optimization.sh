@@ -39,7 +39,7 @@ nprocs_hr=180
 nprocs_lr=16
 
 iter=0
-itermax=6
+itermax=10
 costfactor=0.95
 
 jobfile=run_optimization.bash

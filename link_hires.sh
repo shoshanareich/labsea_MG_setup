@@ -58,7 +58,7 @@ if [ ${iter} -lt 1 ]; then
   sed -i -e 's/'"doMainUnpack = .TRUE."'/'"doMainUnpack = .FALSE."'/g' data.ctrl
 else
 #  mkdir adxxfiles/
-  cp ${dirrun_pup}/xx_hires/*.data .
+  cp ${dirrun_pup}/xx_hires/*000000${optimext}.data .
   cp -f ${datadir}/input_binaries_hires/xx_theta.0000000000.meta ./xx_theta.000000${optimext}.meta
   cp -f ${datadir}/input_binaries_hires/xx_atemp.0000000000.meta ./xx_atemp.000000${optimext}.meta
   cp $hr_dir_iter0/xx_theta.0000000000.meta ./xx_theta.000000${optimext}.meta
