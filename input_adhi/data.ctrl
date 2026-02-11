@@ -20,7 +20,6 @@
 # *********************
  &CTRL_NML_GENARR
  xx_genarr3d_file(1)       = 'xx_theta',
-# xx_genarr3d_weight(1)     = 'ones_64b.bin',
  xx_genarr3d_weight(1)     = 'T_wt_fromASTE_HR_removeboundary.bin',
  xx_genarr3d_bounds(1:5,1) = -2.,-1.9,39.,40.,5.,
  xx_genarr3d_preproc(1,1)  = 'WC01',
@@ -29,25 +28,9 @@
  xx_genarr3d_file(2)       = 'xx_salt',
  xx_genarr3d_weight(2)     = 'S_wt_fromASTE_HR_removeboundary.bin',
  xx_genarr3d_bounds(1:5,2) = 29.,29.5,40.5,41.,5.,
-# xx_genarr3d_preproc(1,2)  = 'smooth',
  xx_genarr3d_preproc(1,2)='WC01',
  mult_genarr3d(2)          = 1.,
 #
-## xx_genarr3d_file(3)       = 'xx_uvel',
-## xx_genarr3d_weight(3)     = 'ones_64b.bin',
-### xx_genarr3d_preproc(1,1)  = 'smooth',
-## mult_genarr3d(3)          = 0.0,
-###
-## xx_genarr3d_file(4)       = 'xx_vvel',
-## xx_genarr3d_weight(4)     = 'ones_64b.bin',
-### xx_genarr3d_preproc(1,2)  = 'smooth',
-## mult_genarr3d(3)          = 0.0,
-###
-# xx_genarr2d_file(1)       = 'xx_etan',
-# xx_genarr2d_weight(1)     = 'ones_64b.bin',
-## xx_genarr3d_preproc(1,2)  = 'smooth',
-# mult_genarr2d(1)          = 0.0,
-##
 # xx_genarr2d_file(1)       = 'xx_siarea',
 # xx_genarr2d_weight(1)     = 'ones_64b.bin',
 ##xx_genarr2d_bounds(1:5,1) = 0.,0.,1.,1.,0.,
@@ -65,7 +48,6 @@
  xx_gentim2d_startdate2(1) = 000000,
  xx_gentim2d_period(1)     = 86400.0,
  xx_gentim2d_preproc(1,1)='WC01',
-# xx_gentim2d_preproc(1,1)  = 'smooth',
  mult_gentim2d(1)          = 1.0,
 #
 #
