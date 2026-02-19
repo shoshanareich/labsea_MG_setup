@@ -9,8 +9,8 @@
   useSALT_PLUME = .TRUE.,
 ## useMNC    = .TRUE.,
   useECCO   = .TRUE.,
-  useProfiles = .TRUE.,
-#  useOBSFIT  = .TRUE.,
+#  useProfiles = .TRUE.,
+  useOBSFIT  = .TRUE.,
 #  useGrdchk = .TRUE.,
   useSMOOTH = .TRUE.,
  &

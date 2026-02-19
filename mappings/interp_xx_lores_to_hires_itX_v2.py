@@ -28,7 +28,7 @@ griddir_hr = dirroot + 'grid_hires/'
 #dirrun_lr = dirroot + 'run_adlo_it' + iter + '/'
 #dirrun_hr = dirroot + 'run_adhi_it' + iter + '/'
 
-dirrun_pup = dirroot + 'assim_argo_MG/run_adlo_packunpack/'
+dirrun_pup = sys.argv[2] 
 dir_out = dirrun_pup + 'xx_hires/'
 
 # read in high-res grid and low-res grid

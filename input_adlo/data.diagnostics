@@ -111,7 +111,7 @@
 #  frequency(11) = 3600.0,
   frequency(11) = 86400.0,
 #  frequency(11) = 2635200.0,
-   fields(1:10,11) = 'ETAN    ',
+   fields(1:11,11) =  'SSH', 'ETAN    ',
 #stuff that is not quite state variables (and may not be quite
 #synchroneous) but are added here to reduce number of files
                  'DETADT2 ','PHIBOT  ','sIceLoad',

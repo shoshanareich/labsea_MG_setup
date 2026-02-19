@@ -1,9 +1,7 @@
 #rootdir=/home/shoshi/MITgcm_c69j/lab_sea12/
 #datadir=/home/shoshi/MITgcm_obsfit/lab_sea12/
-#scratchdir=/scratch/shoshi/labsea_MG_12/assim_argo_MG/
 rootdir=/work2/08382/shoshi/stampede3/MITgcm_c69j/lab_sea12/
 datadir=/work2/08382/shoshi/stampede3/MITgcm_c69j/lab_sea12/
-scratchdir=/scratch/08382/shoshi/labsea_runs/assim_argo_MG/
 iter=$1
 iter=$((iter+1))
 optimext=$(printf "%04d" $iter)
@@ -26,6 +24,7 @@ ln -s ${datadir}/input_binaries_lores/diffkr_r4.bin .
 ln -s ${datadir}/input_binaries_exf/* .
 ln -s ${datadir}/input_binaries_hires/ones_64b.bin .
 ln -s ${datadir}/input_binaries_hires/ARGO_WO_2024_PFL_D_labsea_splitcost.nc .
+ln -s ${datadir}/input_binaries_hires/swot_obsfit_cycles_9thru11_labsea_L3v3.nc .
 ln -s ${datadir}/input_weights_lores/*_jra3q_weights_Jan2024_64b_SMOOTHED_removeboundary.bin .
 ln -s ${datadir}/input_binaries_lores/rads_j3_labsea_96x120_v2_2024 .
 ln -s ${datadir}/input_binaries_lores/slaerr_03m.bin .

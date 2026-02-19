@@ -21,9 +21,10 @@ dirroot='/scratch/08382/shoshi/labsea_runs/'
 iter = sys.argv[1] # sys.argv[0] is name of python file
 print(iter)
 ext = sys.argv[2]
+rundirs = sys.argv[3]
 
-dirrun_lr = dirroot + 'assim_argo_MG/run_adlo_it' + iter + ext + '/' #'_5day_ASTEwts/'
-dirrun_hr = dirroot + 'assim_argo_MG/run_adhi_it' + iter + ext + '/' #'_5day_ASTEwts/'
+dirrun_lr = rundirs + '/run_adlo_it' + iter + ext + '/' #'_5day_ASTEwts/'
+dirrun_hr = rundirs + '/run_adhi_it' + iter + ext + '/' #'_5day_ASTEwts/'
 
 
 ## NEW BATHY

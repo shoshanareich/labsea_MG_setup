@@ -4,7 +4,7 @@
  &OBSFIT_NML
 # obsfitDir = 'OBSFIT',
 # obsfitFiles(1) = 'swot_labsea_jan1_jan2_LR_removebad',
- obsfitFiles(1) = 'swot_obsfit_cycle9_labsea_LONcorrected_removecoast_400m',
+ obsfitFiles(1) = 'swot_obsfit_cycles_9thru11_labsea_L3v3',
  mult_obsfit(1) = 1.0,
  obsfitdoncoutput = .TRUE.,
  &

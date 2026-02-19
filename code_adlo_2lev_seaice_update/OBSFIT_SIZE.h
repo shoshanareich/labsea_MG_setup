@@ -25,12 +25,12 @@ C This is the max number of input files in data.obsfit
 C This is the max number of "valid" observations, i.e. with date within
 C the model run
       INTEGER NOBSMAX_OBS
-      PARAMETER ( NOBSMAX_OBS=65000 )
+      PARAMETER ( NOBSMAX_OBS=180000 )
 
 C This is the max total number of samples in the file
 C (not only "valid" samples)
       INTEGER NSAMPLES_MAX_GLO
-      PARAMETER ( NSAMPLES_MAX_GLO=65000 )
+      PARAMETER ( NSAMPLES_MAX_GLO=180000 )
 
 C This is the max number of "valid" samples in each tile
       INTEGER NSAMP_PER_TILE_MAX
