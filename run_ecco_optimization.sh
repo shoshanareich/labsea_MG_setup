@@ -1,7 +1,7 @@
 #!/bin/bash -x
-#SBATCH -J labseaMGswot
-#SBATCH -o labseaMGswot.%j.out
-#SBATCH -e labseaMGswot.%j.err
+#SBATCH -J labseaMGrads
+#SBATCH -o labseaMGrads.%j.out
+#SBATCH -e labseaMGrads.%j.err
 #SBATCH -t 48:00:00
 #SBATCH -p skx
 #SBATCH -N 6 
@@ -42,13 +42,13 @@ iter=0
 itermax=10
 costfactor=0.95
 
-jobfile=run_swot_optimization.bash
+jobfile=run_ecco_optimization.bash
 
 #--- set dir ------------
 #rootdir=/home/shoshi/MITgcm_c69j/lab_sea12/
 #scratchdir=/scratch/shoshi/labsea_MG_12/assim_argo_MG
 rootdir=/work2/08382/shoshi/stampede3/MITgcm_c69j/lab_sea12/
-scratchdir=/scratch/08382/shoshi/labsea_runs/assim_swot_MG/
+scratchdir=/scratch/08382/shoshi/labsea_runs/assim_rads_MG/
 
 builddir_hi=${rootdir}/build_adhi_2lev_seaice_update_mpi
 builddir_lo=${rootdir}/build_adlo_2lev_seaice_update_mpi
@@ -100,8 +100,8 @@ while [ ! ${iter} -gt $itermax ]; do
   conda activate py38
   # create low-res xx_[ctrl]
   python3 ${rootdir}/mappings/make_cost_cp_v2.py "$ext2" "" "$scratchdir" 
-  ## profiles retiling 
-  python3 ${rootdir}/mappings/make_obsfit_lr_tiles.py "$ext2" "" "$scratchdir" 
+  ## cost for ecco pkg 
+  python3 ${rootdir}/mappings/make_obsfit_lr_tiles.py "$ext2" "" 
   conda deactivate
 
   cd $workdir_lo
